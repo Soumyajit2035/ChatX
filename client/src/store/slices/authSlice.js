@@ -9,12 +9,14 @@ export const login = createAsyncThunk(
     "AUTH.LOGIN",
     async (userDetails) => {
        const response = await api.login(userDetails);
+
+       console.log(response)
        if (response.error) {
           throw response.exception.response.data;
        } else {
-          const { userDetails } = response?.data;
+          const  userDetails  = response;
           localStorage.setItem("user", JSON.stringify(userDetails))
-          return response.data.userDetails;
+          return response;
        }
     }
 );

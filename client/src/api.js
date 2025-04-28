@@ -2,7 +2,7 @@ import axios from "axios";
 import { logout } from "./shared/utils/auth";
 
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL || "http://localhost:4444/api", // Default to local if no environment variable
+  baseURL: "https://chat-jlge.onrender.com/api", // Default to local if no environment variable
   timeout: 1000,
 });
 // const apiClient = axios.create({
@@ -25,16 +25,48 @@ apiClient.interceptors.request.use(
   }
 );
 
-// public routes
+// Configure Axios client
+const apiClient1 = axios.create({
+  baseURL: "https://chat-jlge.onrender.com/api", // Ensure this is correct
+  timeout: 5000, // Increased timeout to allow more time for requests
+});
+
+// Public routes
 
 export const login = async (data) => {
   try {
-    return await apiClient.post("/auth/login", data);
+    // Make the POST request to the login endpoint
+    const response = await apiClient1.post("/auth/login", data);
+    
+    // Handle the response (if needed, log or process it)
+    console.log('Login Response:', response.data);
+
+    return response.data.userDetails; // Return the data from the response
   } catch (exception) {
-    return {
-      error: true,
-      exception,
-    };
+    // Log and handle specific errors
+    console.error('Login failed:', exception);
+    
+    // If exception is a known error type (e.g., network issue or server error)
+    if (exception.response) {
+      // Server returned a response (e.g., 4xx, 5xx error)
+      return {
+        error: true,
+        message: exception.response.data || 'Server Error',
+        status: exception.response.status,
+      };
+    } else if (exception.request) {
+      // No response received from server
+      return {
+        error: true,
+        message: 'No response from the server. Please check your connection.',
+      };
+    } else {
+      // Other errors (e.g., request setup issues)
+      return {
+        error: true,
+        message: exception.message || 'An unexpected error occurred.',
+      };
+    }
   }
 };
 
