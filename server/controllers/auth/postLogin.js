@@ -22,6 +22,7 @@ const postLogin = async (req, res) => {
           expiresIn: "24h",
         }
       );
+      console.log("running");
 
       return res.status(200).json({
         userDetails: {
