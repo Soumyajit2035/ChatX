@@ -8,7 +8,7 @@ const postLogin = async (req, res) => {
     const { mail, password } = req.body;
 
     const user = await User.findOne({ mail: mail.toLowerCase() });
-
+console.log(user,"in login credentials runs");
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // send new token
