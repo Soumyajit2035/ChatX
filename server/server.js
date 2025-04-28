@@ -27,6 +27,7 @@ socketServer.registerSocketServer(server);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
+    console.log("connecetd");
     server.listen(PORT, () => {
       console.log(`Server is listening on ${PORT}`);
     });
