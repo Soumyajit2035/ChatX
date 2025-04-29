@@ -1,5 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import { openAlertMessage } from "./alertActions";
 import * as api from "../../api";
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {openAlertMessage} from "./alertSlice";
@@ -62,6 +60,9 @@ export const friendsSlice = createSlice({
       setOnlineUsers(state, action) {
          state.onlineUsers = action.payload;
       },
+      unfriend: (state, action) => {
+         state.friends = state.friends.filter((friend) => friend.id !== action.payload);
+      },
    },
    extraReducers: {
       [sendFriendInvitation.fulfilled]: (state, action) => {
@@ -81,6 +82,7 @@ export const {
    setPendingFriendsInvitations,
    setFriends,
    setOnlineUsers,
+   unfriend,
 } = friendsSlice.actions;
 
 export const friendsReducer = friendsSlice.reducer;

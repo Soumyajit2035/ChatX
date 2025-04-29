@@ -18,7 +18,7 @@ const Messenger = () => {
   return (
     <MainContainer>
       {!chosenChatDetails ? (
-        <WelcomeMessage />
+       <WelcomeMessage />
       ) : (
         <MessengerContent chosenChatDetails={chosenChatDetails} />
       )}

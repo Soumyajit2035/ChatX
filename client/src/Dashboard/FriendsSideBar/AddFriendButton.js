@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomPrimaryButton from "../../shared/components/CustomPrimaryButton";
 import AddFriendDialog from "./AddFriendDialog";
+import DiscoverDashboard from '../Messenger/discover/DiscoverDashboard';
 
 const additionalStyles = {
   marginTop: "10px",
