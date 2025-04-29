@@ -26,9 +26,10 @@ const DiscoverDashboard = () => {
       sx={{
         padding: isMobile ? "10px" : "20px",
         background: "#1e1f22",
-        minHeight: "100vh",
+        //minHeight: "100vh",
         color: "white",
         width: "-webkit-fill-available",
+        height:"auto",
       }}
     >
       <Typography variant={isMobile ? "h5" : "h3"} gutterBottom>
