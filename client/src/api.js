@@ -74,6 +74,12 @@ export const register = async (data) => {
   try {
     return await apiClient.post("/auth/register", data);
   } catch (exception) {
+    if (exception.response?.status === 409) {
+      return {
+        error: true,
+        message: "The email or username is already in use. Please try a different one.",
+      };
+    }
     return {
       error: true,
       exception,
