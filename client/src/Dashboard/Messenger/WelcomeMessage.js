@@ -5,7 +5,7 @@ import DiscoverDashboard from "./discover/DiscoverDashboard";
 
 const Wrapper = styled("div")({
   flexGrow: 1,
-  height: "100vh",
+  height: "auto",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
