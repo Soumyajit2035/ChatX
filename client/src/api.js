@@ -3,6 +3,10 @@ import { logout } from "./shared/utils/auth";
 
 const apiClient = axios.create({
   baseURL: "https://chat-jlge.onrender.com/api", // Default to local if no environment variable
+  //1sec
+  //db res server credentials verfiy 
+  //res 
+  //2s
 });
 // const apiClient = axios.create({
 //   baseURL: "https://chatx-rqq5.onrender.com/api", // Default to local if no environment variable
@@ -25,17 +29,17 @@ apiClient.interceptors.request.use(
 );
 
 // Configure Axios client
-const apiClient1 = axios.create({
-  baseURL: "https://chat-jlge.onrender.com/api", // Ensure this is correct
-  timeout: 5000, // Increased timeout to allow more time for requests
-});
+// const apiClient1 = axios.create({
+//   baseURL: "https://chat-jlge.onrender.com/api", // Ensure this is correct
+//   timeout: 5000, // Increased timeout to allow more time for requests
+// });
 
 // Public routes
 
 export const login = async (data) => {
   try {
     // Make the POST request to the login endpoint
-    const response = await apiClient1.post("/auth/login", data);
+    const response = await apiClient.post("/auth/login", data);
     
     // Handle the response (if needed, log or process it)
     console.log('Login Response:', response.data);
@@ -89,7 +93,7 @@ export const register = async (data) => {
 // secure routes
 export const sendFriendInvitation = async (data) => {
   try {
-    return await apiClient1.post("/friend-invitation/invite", data);
+    return await apiClient.post("/friend-invitation/invite", data);
   } catch (exception) {
     checkResponseCode(exception);
     return {
@@ -101,7 +105,7 @@ export const sendFriendInvitation = async (data) => {
 
 export const acceptFriendInvitation = async (data) => {
   try {
-    return await apiClient1.post("/friend-invitation/accept", data);
+    return await apiClient.post("/friend-invitation/accept", data);
   } catch (exception) {
     checkResponseCode(exception);
     return {
@@ -113,7 +117,7 @@ export const acceptFriendInvitation = async (data) => {
 
 export const rejectFriendInvitation = async (data) => {
   try {
-    return await apiClient1.post("/friend-invitation/reject", data);
+    return await apiClient.post("/friend-invitation/reject", data);
   } catch (exception) {
     checkResponseCode(exception);
     return {
