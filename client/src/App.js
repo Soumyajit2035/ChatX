@@ -1,4 +1,5 @@
 import React from "react";
+// import viteLogo from /client/
 import {Navigate,
    Route,Routes
 } from "react-router-dom";

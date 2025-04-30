@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 const LoginPage = () => {
   const dispatch = useDispatch();
    const navigate = useNavigate();
-  const [mail, setMail] = useState("damon@gmail.com");
+  const [mail, setMail] = useState ("damon@gmail.com");
   const [password, setPassword] = useState("123456");
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

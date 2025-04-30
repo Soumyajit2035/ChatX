@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import DiscoverDashboard from "./discover/DiscoverDashboard";
+import chatX from "./ChatX-bg.png";
 
 const Wrapper = styled("div")({
   flexGrow: 1,
@@ -9,7 +10,10 @@ const Wrapper = styled("div")({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "#f4f8fb",
+  backgroundImage: `url(${chatX})`, // Add your image path here
+  backgroundSize: "cover", // Ensures the image covers the entire background
+  backgroundPosition: "center", // Centers the image
+  backgroundRepeat: "no-repeat", // Prevents the image from repeating
 });
 
 const Card = styled("div")({

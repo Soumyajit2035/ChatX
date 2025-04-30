@@ -4,6 +4,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import { styled } from "@mui/system";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+import chatXLogo from "./ChatX-logo.png"; // Import the image
 
 const SidebarContainer = styled("div")({
   display: "flex",
@@ -85,8 +86,7 @@ const ModalContainer = styled("div")({
 });
 
 const MainPageButton = () => {
-  const [servers, setServers] = useState([
-  ]);
+  const [servers, setServers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newServerName, setNewServerName] = useState("");
   const [newServerIcon, setNewServerIcon] = useState(null);
@@ -128,9 +128,17 @@ const MainPageButton = () => {
 
   return (
     <SidebarContainer>
-      <GroupsButton>
-        <GroupsIcon />
-      </GroupsButton>
+      {/* <GroupsButton> */}
+        <img
+          src={chatXLogo}
+          alt="ChatX Logo"
+          style={{
+            width: "48px", // Increase the size
+            height: "48px", // Increase the size
+            borderRadius: "50%", // Make the image rounded
+          }}
+        />
+      {/* </GroupsButton> */}
       {servers.map((server) => (
         <ServerContainer key={server.id}>
           <ServerIcon>
